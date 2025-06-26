@@ -29,10 +29,8 @@ Follow these steps to get the server running in your workspace:
           "arxiv-search": {
               "command": "uv",
               "args": [
-                  "--directory",
-                  "${workspaceFolder}/arxiv_searcher/",
                   "run",
-                  "arxiv_mcp.py"
+                  "${workspaceFolder}/arxiv_searcher/arxiv_mcp.py"
               ]
           }
       }
@@ -45,21 +43,49 @@ Follow these steps to get the server running in your workspace:
 
 ## ✨ Features
 
-### 🛠️ Tool: `search_papers`
+### 🛠️ Tools Provided
 
-This is the main tool provided by the server. It searches for papers on arXiv, always filtered for the Software Engineering category (`cs.SE`), and intelligently parses natural language queries.
+This MCP server exposes several useful tools for searching, analyzing, and exporting arXiv papers in the field of software engineering:
 
-**Parameters:**
+#### `search_papers`
+Searches arXiv papers filtered by the Software Engineering category (`cs.SE`).
+- **Parameters:** `query`, `max_results`, `start_date`, `end_date`, `sort_by_relevance`, `category`
+- **Returns:** Dictionary with the query used and the results.
 
-- `query` (str): The search query. Can be a phrase like "multi-agent systems from 2023". Years and keywords are automatically extracted.
-- `max_results` (int, optional): Maximum number of results to return. Defaults to `10`.
-- `start_date` (str, opcional): Start date (YYYY or YYYY-MM-DD). Overrides any year found in the query.
-- `end_date` (str, opcional): End date (YYYY or YYYY-MM-DD). Overrides any year found in the query.
-- `sort_by_relevance` (bool, opcional): Sorts by relevance if `True`, otherwise by date. Defaults to `True`.
+#### `get_paper_details`
+Gets detailed information about a paper by its arXiv ID.
+- **Parameters:** `arxiv_id`
+- **Returns:** Title, authors, abstract, dates, categories, DOI, etc.
 
-**Returns:**
+#### `search_by_author`
+Searches for papers by a specific author, with optional category and date filters.
+- **Parameters:** `author_name`, `max_results`, `category`, `start_date`, `end_date`
+- **Returns:** List of found papers.
 
-A dictionary with `query_used` (the query sent to arXiv) and `results` (list of found papers).
+#### `analyze_paper_trends`
+Analyzes trends in a collection of papers (authors, keywords, timeline, categories).
+- **Parameters:** `papers`, `analysis_type`
+- **Returns:** Statistics and analysis according to the requested type.
+
+#### `find_related_papers`
+Finds related papers based on the title of a reference paper, using keyword similarity.
+- **Parameters:** `paper_title`, `max_results`, `similarity_threshold`, `category`
+- **Returns:** List of similar papers.
+
+#### `download_paper_pdf`
+Downloads the PDF of an arXiv paper.
+- **Parameters:** `pdf_url`, `save_path`, `filename`
+- **Returns:** Path and status of the download.
+
+#### `export_search_results`
+Exports search results to various formats (`bibtex`, `csv`, `json`, `markdown`).
+- **Parameters:** `results`, `format`, `filename`, `save_path`
+- **Returns:** Path to the exported file and a preview of the content.
+
+#### `get_arxiv_categories`
+Returns the list of arXiv categories and their descriptions.
+- **Parameters:** None
+- **Returns:** Dictionary of categories and usage notes.
 
 ---
 
