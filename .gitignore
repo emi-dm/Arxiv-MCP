@@ -1,0 +1,28 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+*.lock
+
+# Custom configuration files
+.vscode/
+.mcp/
+
+# Private keys and sensitive data
+*.pem
+*.key
+*.crt
+.env
+.example.*
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+
