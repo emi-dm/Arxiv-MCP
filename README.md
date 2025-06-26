@@ -116,7 +116,7 @@ uv sync
 Start the server directly from your terminal:
 
 ```bash
-uv run --directory src/arxivsearcher/ arxiv_mcp.py
+uv run --directory arxivsearcher/ arxiv_mcp.py
 ```
 
 ### 🐞 Debugging
