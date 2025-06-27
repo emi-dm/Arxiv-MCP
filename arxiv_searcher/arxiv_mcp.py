@@ -4,13 +4,10 @@ import json
 import os
 import requests
 import pandas as pd
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import datetime
-from pathlib import Path
 from typing import Dict, List, Any
-from urllib.parse import urlparse
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 from fastmcp import FastMCP
 
 mcp = FastMCP("ArxivSearcher 🚀")
@@ -381,7 +378,6 @@ def find_related_papers(
         )
         
         results = []
-        reference_text = paper_title.lower()
         
         for r in search.results():
             # Calculate simple similarity based on keyword overlap
