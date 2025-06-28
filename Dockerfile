@@ -10,7 +10,7 @@ WORKDIR /app
 # Set environment variables
 ENV PYTHONPATH=/app
 ENV PYTHONUNBUFFERED=1
-ENV UV_CACHE_DIR=/tmp/uv-cache
+ENV UV_CACHE_DIR=/app/.uv-cache
 
 # Install system dependencies and uv
 RUN apt update && apt install -y \
@@ -20,10 +20,10 @@ RUN apt update && apt install -y \
     && mv /root/.local/bin/uv /usr/local/bin/uv
 
 # Copy dependency files
-COPY pyproject.toml uv.lock ./
+COPY pyproject.toml ./
 
 # Install Python dependencies using uv
-RUN uv sync --frozen --no-dev
+RUN uv sync
 
 # Copy the application code
 COPY arxiv_searcher/ ./arxiv_searcher/
