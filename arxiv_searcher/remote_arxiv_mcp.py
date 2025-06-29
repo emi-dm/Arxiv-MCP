@@ -10,7 +10,7 @@ from typing import Dict, List, Any
 from sklearn.feature_extraction.text import TfidfVectorizer
 from fastmcp import FastMCP
 
-mcp = FastMCP("ArxivSearcher 🚀", port=8001, host='localhost')
+mcp = FastMCP("ArxivSearcher 🚀", port=8001, host='0.0.0.0')
 
 
 @mcp.tool
