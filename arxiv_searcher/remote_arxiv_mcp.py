@@ -2,7 +2,6 @@ import arxiv
 import re
 import json
 import os
-import requests
 import pandas as pd
 from collections import Counter
 from datetime import datetime
@@ -417,56 +416,36 @@ def find_related_papers(
 @mcp.tool
 def download_paper_pdf(
     pdf_url: str,
-    save_path: str | None = None,
     filename: str | None = None
 ) -> dict:
     """
-    Download a paper's PDF from ArXiv.
-    
+    Prepares a direct download link for a paper's PDF from ArXiv.
+    This tool does not download the file on the server, but provides
+    the client with the URL and a suggested filename for download.
+
     :param pdf_url: The PDF URL from search results
-    :param save_path: Directory to save the PDF (default: current directory)
     :param filename: Custom filename for the PDF (default: extracted from URL)
     """
     try:
-        if save_path is None:
-            save_path = os.getcwd()
-        
-        # Create directory if it doesn't exist
-        os.makedirs(save_path, exist_ok=True)
-        
         if filename is None:
             # Extract filename from URL
             arxiv_id = pdf_url.split("/")[-1].replace(".pdf", "")
             filename = f"{arxiv_id}.pdf"
-        
+
         if not filename.endswith('.pdf'):
             filename += '.pdf'
-        
-        full_path = os.path.join(save_path, filename)
-        
-        # Download the PDF
-        response = requests.get(pdf_url, stream=True)
-        response.raise_for_status()
-        
-        with open(full_path, 'wb') as f:
-            for chunk in response.iter_content(chunk_size=8192):
-                f.write(chunk)
-        
-        file_size = os.path.getsize(full_path)
-        
+
         return {
             "success": True,
-            "pdf_url": pdf_url,
-            "saved_path": full_path,
-            "filename": filename,
-            "file_size_bytes": file_size,
-            "file_size_mb": round(file_size / (1024 * 1024), 2)
+            "download_url": pdf_url,
+            "suggested_filename": filename,
+            "message": "Ready for client-side download."
         }
-        
+
     except Exception as e:
         return {
             "success": False,
-            "error": f"Failed to download PDF: {str(e)}",
+            "error": f"Failed to prepare download link: {str(e)}",
             "pdf_url": pdf_url
         }
 
