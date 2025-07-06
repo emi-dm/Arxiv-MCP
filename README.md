@@ -13,9 +13,11 @@ An MCP server for intelligent searching of Software Engineering papers on arXiv,
    cd Arxiv-MCP
    ```
 
+
 2. **Choose your setup method:**
    - [Using Docker (Recommended)](#option-1-using-docker-recommended)
    - [Local configuration with uv](#option-2-local-configuration-with-uv-requires-code-locally)
+   - [New! Consume the MCP server directly from the cloud](#option-3-consume-the-mcp-server-in-the-cloud)
 
 ---
 
@@ -46,9 +48,28 @@ Before you begin, make sure you have installed:
 
 ---
 
+
+
 ## ⚡️ Quickstart in VS Code
 
-You can run the server in VS Code using either Docker (recommended, no code needed locally) or locally with uv (requires code in your directory).
+You can run the server in VS Code using Docker (recommended, you don't need the code locally), locally with uv, **or consume it directly from the cloud**.
+
+### Option 3: Consume the MCP server in the cloud (Recommended for quick testing!)
+
+You don't need to install anything or clone the repository. You can consume the MCP server directly using the following configuration in `.vscode/mcp.json` or in your compatible MCP client:
+
+```json
+{
+  "servers": {
+    "arxiv-mcp": {
+      "url": "https://arxiv-mcp-sq0a.onrender.com/mcp/"
+    }
+  }
+}
+```
+
+This works in both VS Code and [Cursor](https://www.cursor.so/) and other compatible MCP clients.
+
 
 ### Option 1: Using Docker (Recommended)
 > **Note:** If you use Docker, you do not need to have the code in your local directory. The container will run everything needed.
@@ -86,13 +107,14 @@ You can run the server in VS Code using either Docker (recommended, no code need
 
 ---
 
+
 ### Option 2: Local configuration with uv (requires code locally)
 
 1.  **Create `.vscode/mcp.json`:**
-    In your project root, create the `.vscode` folder if it doesn't exist. Inside, create a file named `mcp.json`.
+    In your project root, create the `.vscode` folder if it doesn't exist. Inside, create un archivo llamado `mcp.json`.
 
-2.  **Add the local server configuration:**
-    Copy and paste the following configuration into `.vscode/mcp.json`:
+2.  **Agrega la configuración local del servidor:**
+    Copia y pega la siguiente configuración en `.vscode/mcp.json`:
 
     ```json
     {
@@ -108,7 +130,7 @@ You can run the server in VS Code using either Docker (recommended, no code need
     }
     ```
 
-3. **Start the server from VS Code**
+3. **Inicia el servidor desde VS Code**
 
 ---
 
