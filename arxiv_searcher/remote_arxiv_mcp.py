@@ -13,7 +13,7 @@ mcp = FastMCP("ArxivSearcher 🚀", port=8001, host='0.0.0.0')
 
 
 @mcp.tool
-def search_papers(
+async def search_papers(
     query: str,
     max_results: int = 10,
     start_date: str | None = None,
@@ -118,7 +118,7 @@ def search_papers(
 
 
 @mcp.tool
-def get_paper_details(arxiv_id: str) -> dict:
+async def get_paper_details(arxiv_id: str) -> dict:
     """
     Get detailed information about a specific paper by ArXiv ID.
     
@@ -147,7 +147,7 @@ def get_paper_details(arxiv_id: str) -> dict:
 
 
 @mcp.tool
-def search_by_author(
+async def search_by_author(
     author_name: str,
     max_results: int = 20,
     category: str | None = None,
@@ -220,7 +220,7 @@ def search_by_author(
 
 
 @mcp.tool
-def analyze_paper_trends(
+async def analyze_paper_trends(
     papers: List[Dict[str, Any]],
     analysis_type: str = "authors"
 ) -> dict:
@@ -330,7 +330,7 @@ def analyze_paper_trends(
 
 
 @mcp.tool
-def find_related_papers(
+async def find_related_papers(
     paper_title: str,
     max_results: int = 10,
     similarity_threshold: float = 0.7,
@@ -414,7 +414,7 @@ def find_related_papers(
 
 
 @mcp.tool
-def download_paper_pdf(
+async def download_paper_pdf(
     pdf_url: str,
     filename: str | None = None
 ) -> dict:
@@ -451,7 +451,7 @@ def download_paper_pdf(
 
 
 @mcp.tool
-def export_search_results(
+async def export_search_results(
     results: Dict[str, Any],
     format: str = "bibtex",
     filename: str | None = None,
@@ -590,7 +590,7 @@ def export_search_results(
 
 
 @mcp.tool
-def get_arxiv_categories() -> dict:
+async def get_arxiv_categories() -> dict:
     """
     Get a list of available ArXiv categories and their descriptions.
     """
