@@ -1,7 +1,6 @@
 annotated-types==0.7.0
 anyio==4.10.0
 arxiv==2.2.0
--e file:///Users/emi/Desktop/Arxiv-MCP
 attrs==25.3.0
 authlib==1.6.4
 certifi==2025.8.3
