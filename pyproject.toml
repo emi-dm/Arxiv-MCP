@@ -11,7 +11,9 @@ dependencies = [
     "requests",
     "pandas",
     "scikit-learn",
-    "fastmcp"
+    "fastmcp",
+    "ruff>=0.13.1",
+    "pymupdf>=1.26.4",
 ]
 
 [tool.uv]
