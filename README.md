@@ -2,6 +2,9 @@
 
 An MCP server for intelligent searching of Software Engineering papers on arXiv, with advanced filtering and sorting.
 
+> **Updated to v2.0!** — This repository has been updated to **v2.0**: new remote entrypoint, prompt templates, remote-accessible PDF resources, and an upgrade to `fastmcp==2.9.2`.
+
+
 ---
 
 ## 📝 Getting Started
