@@ -234,6 +234,22 @@ Developed by [emi-dm](https://emi-dm.github.io/).
 
 ---
 
+## Version 2.0
+
+- **Remote-accessible resources:** Added MCP `resource`s that allow the server to expose downloaded PDF files and their extracted text (accessible via the `data://downloaded_papers` resource). This enables remote agents/clients to query the MCP about articles that have been downloaded to the server.
+
+- **Prompt templates:** Included a set of `@mcp.prompt` templates in the codebase to improve prompt quality and make it easier to craft searches (e.g., `search_by_author`, `search_by_recent_topic`, `get_paper_by_id`, etc.). These templates are available to clients and the Inspector to generate clearer and more consistent requests.
+
+- **fastmcp update:** The project has been updated to use `fastmcp==2.9.2` (see `requirements.txt` / `uv.lock`). If you manage environments manually, please sync your environment to pick up the new fastmcp release.
+
+Upgrade notes
+
+- To query downloaded papers remotely, call the `data://downloaded_papers` resource from your MCP client or use the provided read helpers in the MCP tools.
+- Use the prompt templates via the MCP client to get consistent, high-quality queries (the template function names are exported as prompts in the server code).
+- Run `uv sync` (or your preferred environment sync command) to install the pinned dependency versions after pulling this release.
+
+---
+
 ## 📚 License
 
 This project is licensed under the MIT License.
